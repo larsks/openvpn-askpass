@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=42", "setuptools-scm[toml]>=3.4"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "openvpn-askpass"
+description = "Initiate GUI password prompt from openvpn management interface"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "GPLv3"}
+dependencies = [
+    "pydantic",
+    "click",
+]
+dynamic = ["version"]
+
+[project.scripts]
+openvpn-askpass = "openvpn_askpass.askpass:main"
+
+[tool.setuptools_scm]

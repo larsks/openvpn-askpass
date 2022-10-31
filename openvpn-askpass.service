@@ -1,0 +1,13 @@
+[Unit]
+StartLimitIntervalSec=0
+
+[Service]
+ExecStartPre=/bin/sh -c 'test -n "$DISPLAY"'
+ExecStartPre=/bin/mkdir -p %t/askpass
+ExecStart=%h/.local/bin/openvpn-askpass -s %t/askpass/askpass.sock
+
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy = default.target
